@@ -1,9 +1,15 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse, render
 
 # Create your views here.
 def index(request):
-    return HttpResponse('Main Page! Hello world!')
+    context: dict[str:str] = {
+        'position': 'Это главная страница проекта Yatube',
+    }
+    return render(request, 'posts/index.html', context)
 
 def group_posts(request, slug):
-    return HttpResponse((f'Page for grouped by {slug} posts.\t\n'
-                         f'{request.META}\t\n'))
+    context: dict[str:str] = {
+        'position': 'Здесь будет информация о группах проекта Yatube',
+        'slug': slug,
+    }
+    return render(request, 'posts/group_list.html', context)
