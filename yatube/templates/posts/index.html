@@ -2,5 +2,8 @@
 
 {% block content %}
   <h1>Последние обновления на сайте</h1>
-  {% include 'includes/article.html' with is_index=True %}
+  {% for post in posts %}
+    {% include 'includes/article.html' with is_index=True %}
+    {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %}
 {% endblock content%}
